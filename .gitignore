@@ -1,0 +1,12 @@
+*~
+target
+/.classpath
+/.project
+/.settings
+/.idea
+/.idea_modules
+/.lib
+/venv
+.classpath_nb
+.ensime
+.ensime_lucene
