@@ -133,3 +133,24 @@ def t_flat_forward(reference_date, day_counter, simple_quote_value, compounding,
         "frequency": t_to_frequency(frequency)
     }
 
+
+def t_option_type(option_type):
+    if option_type == -1:
+        return "Put"
+    elif option_type == 1:
+        return "Call"
+    else:
+        return "Unknown " + str(option_type)
+
+
+def t_striked_type_payoff(striked_type_payoff):
+    if striked_type_payoff.__class__.__name__ == "PlainVanillaPayoff":
+        return {
+            "@type": "PlainVanillaPayoff",
+            "type": t_option_type(striked_type_payoff.optionType()),
+            "strike": striked_type_payoff.strike()
+        }
+    else:
+        return {
+            "@type": "Unknown"
+        }
